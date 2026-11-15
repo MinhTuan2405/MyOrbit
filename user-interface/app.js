@@ -103,8 +103,8 @@ import { createPageLifecycle } from "./src/lib/page-lifecycle.js";export functio
       <div class="detail-actions"><button type="button" class="detail-back" data-close-detail>Back to warehouse</button><button type="button" class="detail-copy" data-copy="${esc(p.id)}">Copy project link ↗</button></div>`;
     openDialog($('#detail-dialog'));
   }
-  function openPost(id) {if (postById.has(id)) navigate(`note.html?id=${encodeURIComponent(id)}`);}
-  function openProject(id) {if (projectById.has(id)) navigate(`project.html?id=${encodeURIComponent(id)}`);}
+  function openPost(id) {if (postById.has(id)) navigate(`/notes/${encodeURIComponent(id)}`);}
+  function openProject(id) {if (projectById.has(id)) navigate(`/projects/${encodeURIComponent(id)}`);}
   function toggleSaved(id) {
     if (saved.has(id)) saved.delete(id);else saved.add(id);
     safeStorage.set('warehouse-bookmarks', JSON.stringify([...saved]));
@@ -184,7 +184,7 @@ import { createPageLifecycle } from "./src/lib/page-lifecycle.js";export functio
     listen($('#featured-next'), 'click', () => slideTo(featuredIndex + 1));
     listen($('#featured-prev'), 'click', () => slideTo(featuredIndex - 1));
     listen($('#show-more'), 'click', () => {expanded = !expanded;renderPosts();});
-    listen($('#career-story-btn'), 'click', () => {navigate('journey.html');});
+    listen($('#career-story-btn'), 'click', () => {navigate('/journey');});
     listen($('.mobile-toggle'), 'click', () => {
       const nav = $('.mobile-nav');nav.hidden = !nav.hidden;
       $('.mobile-toggle').setAttribute('aria-expanded', String(!nav.hidden));
