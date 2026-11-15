@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "myorbit-server"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = ["fastapi[standard]>=0.121.0,<1.0"]
+
+[tool.setuptools]
+py-modules = ["main"]
+
+[tool.fastapi]
+entrypoint = "main:app"
